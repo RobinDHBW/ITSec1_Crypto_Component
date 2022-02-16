@@ -10,7 +10,7 @@ repositories {
 }
 
 task build_jar(type: Jar) {
-    project.archivesBaseName = "report"
+    project.archivesBaseName = "ITSec1_Crypto_Component"
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 
@@ -18,7 +18,7 @@ task build_jar(type: Jar) {
     mkdir "jar"
 
     copy {
-        from 'build/libs/report.jar'
+        from 'build/libs/ITSec1_Crypto_Component.jar'
         into "jar"
     }
 }
