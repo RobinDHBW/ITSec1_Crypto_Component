@@ -1,6 +1,6 @@
 package cryptoUnit;
 
 public interface ICrypto {
-    void encrypt();
-    void decrypt();
+    String encryptAES256(String plain);
+    String decryptAES256(String cipher);
 }
