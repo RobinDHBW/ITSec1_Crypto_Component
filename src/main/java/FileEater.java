@@ -44,8 +44,13 @@ public class FileEater {
         return true;
     }
 
-    public Boolean innerRename(){
-
+    public Boolean innerRename(String appendix, Boolean shouldBeAdded) {
+        File folder = new File(this.path);
+        for (File file : folder.listFiles()) {
+            if (file.isFile()) {
+                fileIO.renameFile(file, appendix, shouldBeAdded);
+            }
+        }
         return true;
     }
 
@@ -66,8 +71,8 @@ public class FileEater {
         }
 
         @Override
-        public Boolean rename() {
-            return innerRename();
+        public Boolean rename(String appendix, Boolean shouldBeAdded) {
+            return innerRename(appendix, shouldBeAdded);
         }
     }
 }

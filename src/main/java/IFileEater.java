@@ -4,5 +4,5 @@ public interface IFileEater {
     String setPath(String path);
     Boolean encrypt();
     Boolean decrypt();
-    Boolean rename();
+    Boolean rename(String appendix, Boolean shouldBeAdded);
 }

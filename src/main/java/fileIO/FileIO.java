@@ -30,7 +30,20 @@ public class FileIO implements IFileIO {
     }
 
     @Override
-    public void renameFile(File file, String appendix) {
+    public void renameFile(File file, String appendix, Boolean shouldBeAdded) {
+        Boolean result = false;
+        if(shouldBeAdded) {
+            result = file.renameTo(new File(file.getAbsolutePath() + appendix));
+        }else {
+            String renameTo = file.getAbsolutePath().substring(0, file.getAbsolutePath().lastIndexOf(appendix));
+            result = file.renameTo(new File(renameTo));
+        }
+        try {
 
+            if (!result) throw new Exception("Could not rename File: " + file.getAbsolutePath());
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+            System.err.println(ex.getStackTrace());
+        }
     }
 }
