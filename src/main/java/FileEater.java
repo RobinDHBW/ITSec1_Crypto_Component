@@ -1,9 +1,14 @@
-import java.net.URL;
+import cryptoUnit.CryptoUnit;
+import fileIO.FileIO;
+
+import java.io.File;
 
 public class FileEater {
     private static final FileEater instance = new FileEater();
     public Port port;
-    private URL path;
+    private String path;
+    private FileIO fileIO = new FileIO();
+    private CryptoUnit cryptoUnit = new CryptoUnit();
 
     private FileEater() {
         this.port = new Port();
@@ -14,22 +19,39 @@ public class FileEater {
         return instance;
     }
 
-    public URL innerSetPath(URL path){
+    public String innerSetPath(String path) {
         this.path = path;
         return path;
     }
 
-    public Boolean innerEncrypt(){
-        return null;
+    public Boolean innerEncrypt() {
+        File folder = new File(this.path);
+        for (File file : folder.listFiles()) {
+            if (file.isFile()) {
+                fileIO.writeFile(file, cryptoUnit.encryptAES256(fileIO.readFile(file)));
+            }
+        }
+        return true;
     }
 
-    public Boolean innerDecypt(){
-        return  null;
+    public Boolean innerDecypt() {
+        File folder = new File(this.path);
+        for (File file : folder.listFiles()) {
+            if (file.isFile()) {
+                fileIO.writeFile(file, cryptoUnit.decryptAES256(fileIO.readFile(file)));
+            }
+        }
+        return true;
+    }
+
+    public Boolean innerRename(){
+
+        return true;
     }
 
     public class Port implements IFileEater {
         @Override
-        public URL setPath(URL path) {
+        public String setPath(String path) {
             return innerSetPath(path);
         }
 
@@ -41,6 +63,11 @@ public class FileEater {
         @Override
         public Boolean decrypt() {
             return innerDecypt();
+        }
+
+        @Override
+        public Boolean rename() {
+            return innerRename();
         }
     }
 }
