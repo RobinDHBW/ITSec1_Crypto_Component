@@ -17,25 +17,13 @@ public class TestComponent {
     private String path = ConfigurationUnitTest.instance.pathToAttack;
 
     @TestFactory
-    public Stream<DynamicTest> testEncryption() {
+    public Stream<DynamicTest> testEncryption_Decryption() {
         ArrayList<DynamicTest> tests = new ArrayList<>();
         File folder = new File(this.path);
         for (File file : folder.listFiles()) {
             if (file.isFile()) {
                 Boolean check = fileIO.writeFile(file, cryptoUnit.encryptAES256(fileIO.readFile(file)));
-                tests.add(DynamicTest.dynamicTest("checkDecryption for " + file.getName(), () -> assertTrue(check)));
-            }
-        }
-        return tests.stream();
-    }
-
-    @TestFactory
-    public Stream<DynamicTest> testDecryption() {
-        ArrayList<DynamicTest> tests = new ArrayList<>();
-        File folder = new File(this.path);
-        for (File file : folder.listFiles()) {
-            if (file.isFile()) {
-                fileIO.writeFile(file, cryptoUnit.encryptAES256(fileIO.readFile(file)));
+                tests.add(DynamicTest.dynamicTest("checkEncryption for " + file.getName(), () -> assertTrue(check)));
             }
         }
         for (File file : folder.listFiles()) {
