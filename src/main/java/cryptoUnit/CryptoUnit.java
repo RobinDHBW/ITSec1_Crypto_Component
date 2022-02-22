@@ -8,6 +8,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Base64;
 
 public class CryptoUnit implements ICrypto {
@@ -28,7 +29,7 @@ public class CryptoUnit implements ICrypto {
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(ex.getStackTrace());
+            System.err.println(Arrays.toString(ex.getStackTrace()));
             return null;
         }
     }
@@ -46,7 +47,7 @@ public class CryptoUnit implements ICrypto {
             return new String(cipher.doFinal(Base64.getDecoder().decode(cipherText)));
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(ex.getStackTrace());
+            System.err.println(Arrays.toString(ex.getStackTrace()));
             return null;
         }
     }

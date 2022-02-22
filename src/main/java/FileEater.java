@@ -1,5 +1,5 @@
-import cryptoUnit.CryptoUnit;
-import fileIO.FileIO;
+import cryptoUnit.*;
+import fileIO.*;
 
 import java.io.File;
 
