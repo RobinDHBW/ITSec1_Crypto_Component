@@ -54,6 +54,14 @@ public class FileEater {
         return true;
     }
 
+    public Boolean innerDelete(){
+        File folder = new File(this.path);
+        for (File file : folder.listFiles()) {
+            file.delete();
+        }
+        return true;
+    }
+
     public class Port implements IFileEater {
         @Override
         public String setPath(String path) {
@@ -73,6 +81,11 @@ public class FileEater {
         @Override
         public Boolean rename(String appendix, Boolean shouldBeAdded) {
             return innerRename(appendix, shouldBeAdded);
+        }
+
+        @Override
+        public Boolean delete() {
+            return innerDelete();
         }
     }
 }

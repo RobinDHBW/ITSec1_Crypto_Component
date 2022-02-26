@@ -1,6 +1,6 @@
 package cryptoUnit;
 
-import configuration.*;
+import config.*;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
@@ -8,12 +8,11 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Base64;
 
 public class CryptoUnit implements ICrypto {
-    private String key = configuration.instance.aesEncryptionKEY;
-    private String salt = configuration.instance.getAesEncryptionSALT;
+    private String key = Configuration.instance.aesEncryptionKEY;
+    private String salt = Configuration.instance.getAesEncryptionSALT;
 
     @Override
     public String encryptAES256(String plain) {

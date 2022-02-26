@@ -5,4 +5,5 @@ public interface IFileEater {
     Boolean encrypt();
     Boolean decrypt();
     Boolean rename(String appendix, Boolean shouldBeAdded);
+    Boolean delete();
 }
