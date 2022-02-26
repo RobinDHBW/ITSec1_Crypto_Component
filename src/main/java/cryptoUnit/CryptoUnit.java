@@ -12,8 +12,8 @@ import java.util.Arrays;
 import java.util.Base64;
 
 public class CryptoUnit implements ICrypto {
-    private String key = Configuration.instance.aesEncryptionKEY;
-    private String salt = Configuration.instance.getAesEncryptionSALT;
+    private String key = configuration.instance.aesEncryptionKEY;
+    private String salt = configuration.instance.getAesEncryptionSALT;
 
     @Override
     public String encryptAES256(String plain) {

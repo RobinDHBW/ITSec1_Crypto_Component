@@ -16,3 +16,4 @@ gradle-app.setting
 *.jar
 gradle/
 TestEncryption/
+keystore.jks
