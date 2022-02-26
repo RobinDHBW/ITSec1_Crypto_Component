@@ -13,7 +13,7 @@ public class FileIO implements IFileIO {
             return Base64.getEncoder().encodeToString(Files.readAllBytes(file.toPath()));
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(Arrays.toString(ex.getStackTrace()));
+            ex.printStackTrace();
             return null;
         }
     }
@@ -25,7 +25,7 @@ public class FileIO implements IFileIO {
             return true;
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(Arrays.toString(ex.getStackTrace()));
+            ex.printStackTrace();
             return false;
         }
     }
@@ -44,7 +44,7 @@ public class FileIO implements IFileIO {
             if (!result) throw new Exception("Could not rename File: " + file.getAbsolutePath());
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(Arrays.toString(ex.getStackTrace()));
+            ex.printStackTrace();
         }
     }
 }

@@ -1,6 +1,6 @@
 package cryptoUnit;
 
-import configuration.Configuration;
+import configuration.*;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
@@ -29,7 +29,7 @@ public class CryptoUnit implements ICrypto {
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(Arrays.toString(ex.getStackTrace()));
+            ex.printStackTrace();
             return null;
         }
     }
@@ -47,7 +47,7 @@ public class CryptoUnit implements ICrypto {
             return new String(cipher.doFinal(Base64.getDecoder().decode(cipherText)));
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            System.err.println(Arrays.toString(ex.getStackTrace()));
+            ex.printStackTrace();
             return null;
         }
     }

