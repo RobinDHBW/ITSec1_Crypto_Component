@@ -21,6 +21,7 @@ task build_jar(type: Jar) {
         from 'build/libs/ITSec1_Crypto_Component.jar'
         into "jar"
     }
+    duplicatesStrategy = "include"
 }
 
 dependencies {

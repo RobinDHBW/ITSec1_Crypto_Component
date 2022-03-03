@@ -1,3 +1,5 @@
+package fileIO;
+
 import java.net.URL;
 
 public interface IFileEater {
